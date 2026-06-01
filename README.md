@@ -11,7 +11,11 @@ Password: `123`
 
 (Render.com free plan needed approx. 10 seconds to load the page at the first time)
 
-## Features
+## Added by @hitalo-dev
+
+- Sign In/Register with Google: OAuth2 integration allowing users to quickly and securely create an account or log in using their Google credentials.
+
+## Original Features (Base Repository)
 
 - Allow user to register, log in and log out
 - Login can be done with previosly registered account
