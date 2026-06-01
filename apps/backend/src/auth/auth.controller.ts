@@ -2,22 +2,49 @@ import {
   Body,
   Controller,
   Post,
+  Get,
   HttpCode,
   HttpStatus,
   UseGuards,
   Req,
+  Res,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthLoginDto } from './dto/auth-login.dto';
 import { AuthRegisterDto } from './dto/auth-register.dto';
 import { OmitUser } from './interfaces/auth.interface';
-import { Request } from 'express';
+import { Request, Response } from 'express';
 import { Public } from './decorator/public.decorator';
 import { RefreshJwtAuthGuard } from './guard/refresh-jwt-auth.guard';
+import { GoogleAuthGuard } from './guard/google-auth.guard';
+import { ConfigService } from '@nestjs/config';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private configService: ConfigService,
+  ) {}
+
+  @Public()
+  @UseGuards(GoogleAuthGuard)
+  @Get('google')
+  @HttpCode(HttpStatus.OK)
+  async googleAuth() {
+    // Initiates the Google OAuth 2.0 flow
+  }
+
+  @Public()
+  @UseGuards(GoogleAuthGuard)
+  @Get('google/callback')
+  async googleAuthRedirect(@Req() req: Request, @Res() res: Response) {
+    const tokens = await this.authService.validateGoogleUser(req.user as any);
+    const frontendUrl =
+      this.configService.get<string>('FRONTEND_URL') || 'http://localhost:5173';
+    return res.redirect(
+      `${frontendUrl}/login?access_token=${tokens.access_token}&refresh_token=${tokens.refresh_token}`,
+    );
+  }
 
   @Public()
   @Post('register')

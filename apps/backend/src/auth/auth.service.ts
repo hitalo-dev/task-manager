@@ -183,4 +183,37 @@ export class AuthService {
       },
     });
   }
+
+  async validateGoogleUser(profile: {
+    email: string;
+    firstName?: string;
+    lastName?: string;
+    displayName?: string;
+  }) {
+    let user = await this.prisma.user.findUnique({
+      where: {
+        email: profile.email,
+      },
+    });
+
+    if (!user) {
+      const username =
+        profile.displayName ||
+        `${profile.firstName || ''} ${profile.lastName || ''}`.trim() ||
+        profile.email.split('@')[0];
+
+      user = await this.prisma.user.create({
+        data: {
+          username,
+          email: profile.email,
+          password: null,
+        },
+      });
+    }
+
+    const tokens = await this.getTokens(user.id, user.email);
+    await this.updateRefreshTokenDB(user.id, tokens.refresh_token);
+
+    return tokens;
+  }
 }
