@@ -8,7 +8,7 @@ import * as bcrypt from 'bcrypt';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { JwtService } from '@nestjs/jwt';
 import { AuthLoginDto } from './dto/auth-login.dto';
-import { OmitUser } from './interfaces/auth.interface';
+import { GoogleUser, OmitUser } from './interfaces/auth.interface';
 import { AuthRegisterDto } from './dto/auth-register.dto';
 import { ConfigService } from '@nestjs/config';
 
@@ -184,12 +184,9 @@ export class AuthService {
     });
   }
 
-  async validateGoogleUser(profile: {
-    email: string;
-    firstName?: string;
-    lastName?: string;
-    displayName?: string;
-  }) {
+  async validateGoogleUser(
+    profile: GoogleUser,
+  ): Promise<{ access_token: string; refresh_token: string }> {
     let user = await this.prisma.user.findUnique({
       where: {
         email: profile.email,

@@ -12,7 +12,7 @@ import {
 import { AuthService } from './auth.service';
 import { AuthLoginDto } from './dto/auth-login.dto';
 import { AuthRegisterDto } from './dto/auth-register.dto';
-import { OmitUser } from './interfaces/auth.interface';
+import { OmitUser, RequestWithGoogleUser } from './interfaces/auth.interface';
 import { Request, Response } from 'express';
 import { Public } from './decorator/public.decorator';
 import { RefreshJwtAuthGuard } from './guard/refresh-jwt-auth.guard';
@@ -37,8 +37,11 @@ export class AuthController {
   @Public()
   @UseGuards(GoogleAuthGuard)
   @Get('google/callback')
-  async googleAuthRedirect(@Req() req: Request, @Res() res: Response) {
-    const tokens = await this.authService.validateGoogleUser(req.user as any);
+  async googleAuthRedirect(
+    @Req() req: RequestWithGoogleUser,
+    @Res() res: Response,
+  ) {
+    const tokens = await this.authService.validateGoogleUser(req.user);
     const frontendUrl =
       this.configService.get<string>('FRONTEND_URL') || 'http://localhost:5173';
     return res.redirect(
