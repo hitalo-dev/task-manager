@@ -1,5 +1,4 @@
 import { User } from '@prisma/client';
-import { Profile } from 'passport-google-oauth20';
 import { Request } from 'express';
 
 export interface OmitUser extends Omit<User, 'password'> {}

@@ -342,7 +342,7 @@ const RegisterPage = () => {
                 },
               }}
             >
-              Registrar com Google
+             Google
             </Button>
           </Box>
         </Stack>
