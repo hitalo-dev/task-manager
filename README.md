@@ -114,10 +114,10 @@ VITE_API_USER=${VITE_BACKEND_ADDR}/api/user
 
 ### Layout
 
-![layout-1 picture](https://github.com/ev0clu/task-manager/blob/main/layout-1.png?raw=true)<br>
-![layout-2 picture](https://github.com/ev0clu/task-manager/blob/main/layout-2.png?raw=true)<br>
-![layout-3 picture](https://github.com/ev0clu/task-manager/blob/main/layout-3.png?raw=true)<br>
-![layout-4 picture](https://github.com/ev0clu/task-manager/blob/main/layout-4.png?raw=true)<br>
-![layout-5 picture](https://github.com/ev0clu/task-manager/blob/main/layout-5.png?raw=true)<br>
-![layout-6 picture](https://github.com/ev0clu/task-manager/blob/main/layout-6.png?raw=true)<br>
-![layout-7 picture](https://github.com/ev0clu/task-manager/blob/main/layout-7.png?raw=true)<br>
+![layout-1 picture](https://github.com/hitalo-dev/task-manager/blob/main/layout-1.png?raw=true)<br>
+![layout-2 picture](https://github.com/hitalo-dev/task-manager/blob/main/layout-2.png?raw=true)<br>
+![layout-3 picture](https://github.com/hitalo-dev/task-manager/blob/main/layout-3.png?raw=true)<br>
+![layout-4 picture](https://github.com/hitalo-dev/task-manager/blob/main/layout-4.png?raw=true)<br>
+![layout-5 picture](https://github.com/hitalo-dev/task-manager/blob/main/layout-5.png?raw=true)<br>
+![layout-6 picture](https://github.com/hitalo-dev/task-manager/blob/main/layout-6.png?raw=true)<br>
+![layout-7 picture](https://github.com/hitalo-dev/task-manager/blob/main/layout-7.png?raw=true)<br>
