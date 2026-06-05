@@ -5,9 +5,13 @@ import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from './strategy/jwt.strategy';
 import { RefreshJwtStrategy } from './strategy/refresh-token.strategy';
 import { GoogleStrategy } from './strategy/google-auth.strategy';
+import { MailModule } from '../mail/mail.module';
 
 @Module({
-  imports: [JwtModule.register({})],
+  imports: [
+    JwtModule.register({}),
+    MailModule,
+  ],
   exports: [AuthService],
   providers: [
     AuthService,

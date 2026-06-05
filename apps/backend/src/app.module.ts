@@ -12,6 +12,7 @@ import { BoardModule } from './board/board.module';
 import { ActivityModule } from './activity/activity.module';
 import { ListModule } from './list/list.module';
 import { CardModule } from './card/card.module';
+import { MailModule } from './mail/mail.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { CardModule } from './card/card.module';
     ActivityModule,
     ListModule,
     CardModule,
+    MailModule,
   ],
   providers: [
     {

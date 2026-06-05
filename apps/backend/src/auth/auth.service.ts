@@ -11,6 +11,7 @@ import { AuthLoginDto } from './dto/auth-login.dto';
 import { GoogleUser, OmitUser } from './interfaces/auth.interface';
 import { AuthRegisterDto } from './dto/auth-register.dto';
 import { ConfigService } from '@nestjs/config';
+import { MailService } from '../mail/mail.service';
 
 @Injectable()
 export class AuthService {
@@ -18,6 +19,7 @@ export class AuthService {
     private prisma: PrismaService,
     private jwtService: JwtService,
     private config: ConfigService,
+    private mailService: MailService,
   ) {}
 
   async register(authRegisterDto: AuthRegisterDto): Promise<OmitUser> | never {
@@ -45,6 +47,17 @@ export class AuthService {
         password: hashedPassword,
       },
     });
+
+    this.mailService
+      .sendMail({
+        to: [user.email],
+        subject: 'Bem-vindo ao Task Manager!',
+        text: `Olá ${user.username}, bem-vindo ao Task Manager!`,
+        html: `<h1>Bem-vindo ao Task Manager, ${user.username}!</h1><p>Sua conta foi criada com sucesso.</p>`,
+      })
+      .catch((error) => {
+        console.error('Erro ao enviar e-mail de boas-vindas:', error);
+      });
 
     delete user.password;
 
@@ -206,6 +219,17 @@ export class AuthService {
           password: null,
         },
       });
+
+      this.mailService
+        .sendMail({
+          to: [user.email],
+          subject: 'Bem-vindo ao Task Manager!',
+          text: `Olá ${user.username}, bem-vindo ao Task Manager!`,
+          html: `<h1>Bem-vindo ao Task Manager, ${user.username}!</h1><p>Sua conta foi criada com sucesso.</p>`,
+        })
+        .catch((error) => {
+          console.error('Erro ao enviar e-mail de boas-vindas via Google:', error);
+        });
     }
 
     const tokens = await this.getTokens(user.id, user.email);

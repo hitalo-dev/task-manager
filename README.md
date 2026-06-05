@@ -7,6 +7,8 @@ A trello clone task manager app has built with React.js for frontend and Nest.js
 ## Added by @hitalo-dev
 
 - Sign In/Register with Google: OAuth2 integration allowing users to quickly and securely create an account or log in using their Google credentials.
+- Service Email: Implemented a secure email system using Nodemailer to send HTML and text messages.
+
 
 ## Original Features (Base Repository)
 
@@ -49,6 +51,14 @@ GOOGLE_CLIENT_ID=
 GOOGLE_CLIENT_SECRET=
 GOOGLE_CALLBACK_URL=
 FRONTEND_URL=
+
+# Email Configurations (SMTP)
+SMTP_HOST=
+SMTP_PORT=
+SMTP_SECURE=
+SMTP_USER=
+SMTP_PASS=
+SMTP_FROM=
 ```
 
 5. Run `npx prisma generate`
