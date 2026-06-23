@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: "exemplo"
+    build:
+      context: .
+    ports:
+      - "4000:4000"   
+      - "5173:5173"  
+    env_file:
+      - ./apps/backend/.env
+      - ./apps/frontend/.env
+    environment:
+      - NODE_ENV=production
+      - HOST=0.0.0.0
+  

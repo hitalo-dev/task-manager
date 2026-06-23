@@ -8,7 +8,8 @@
     "build": "vite build",
     "type-check": "tsc",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "vite preview --port 5173 --host"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",

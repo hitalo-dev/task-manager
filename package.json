@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run type-check build",
-    "start": "node apps/backend/dist/main"
+    "start": "turbo run start --parallel"
   },
   "workspaces": [
     "apps/*"

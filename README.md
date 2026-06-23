@@ -9,7 +9,6 @@ A trello clone task manager app has built with React.js for frontend and Nest.js
 - Sign In/Register with Google: OAuth2 integration allowing users to quickly and securely create an account or log in using their Google credentials.
 - Service Email: Implemented a secure email system using Nodemailer to send HTML and text messages.
 
-
 ## Original Features (Base Repository)
 
 - Allow user to register, log in and log out
@@ -75,6 +74,7 @@ VITE_API_BOARDS=${VITE_BACKEND_ADDR}/api/boards
 VITE_API_LISTS=${VITE_BACKEND_ADDR}/api/lists
 VITE_API_CARDS=${VITE_BACKEND_ADDR}/api/cards
 VITE_API_USER=${VITE_BACKEND_ADDR}/api/user
+VITE_API_GOOGLE_LOGIN=${VITE_BACKEND_ADDR}/api/auth/google
 ```
 
 6. Navigat to **root** folder and run `npm run dev` command in your terminal
@@ -121,6 +121,28 @@ VITE_API_USER=${VITE_BACKEND_ADDR}/api/user
 - [bcrypt](https://www.npmjs.com/package/bcrypt)
 - [Passport](https://www.passportjs.org/)
 - [Turborepo](https://turbo.build/repo)
+
+## 🏗️ Build Docker
+
+-Verify that the environment files have been created and configured for production:
+
+```bash
+apps/backend/.env
+
+apps/frontend/.env
+```
+
+-Run the command to build the images from scratch and start the containers in the background.
+
+```bash
+  docker compose up -d --build
+```
+
+-Access browser
+
+```bash
+  http://localhost:5173/
+```
 
 ### Layout
 
