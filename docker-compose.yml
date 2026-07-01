@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   app:
-    container_name: "exemplo"
+    container_name: "task-manager"
     build:
       context: .
     ports:

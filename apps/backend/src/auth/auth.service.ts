@@ -223,12 +223,12 @@ export class AuthService {
       this.mailService
         .sendMail({
           to: [user.email],
-          subject: 'Bem-vindo ao Task Manager!',
-          text: `Olá ${user.username}, bem-vindo ao Task Manager!`,
-          html: `<h1>Bem-vindo ao Task Manager, ${user.username}!</h1><p>Sua conta foi criada com sucesso.</p>`,
+          subject: 'Welcome to Task Manager!',
+          text: `Hello ${user.username}, welcome to Task Manager!`,
+          html: `<h1>Welcome to Task Manager, ${user.username}!</h1><p>Your account has been successfully created.</p>`,
         })
         .catch((error) => {
-          console.error('Erro ao enviar e-mail de boas-vindas via Google:', error);
+          console.error('Error sending welcome email via Google:', error);
         });
     }
 
